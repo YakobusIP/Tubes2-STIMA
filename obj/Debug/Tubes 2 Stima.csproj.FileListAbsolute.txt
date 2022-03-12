@@ -1,0 +1,11 @@
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\bin\Debug\Tubes 2 Stima.exe.config
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\bin\Debug\Tubes 2 Stima.exe
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\bin\Debug\Tubes 2 Stima.pdb
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.csproj.AssemblyReference.cache
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.csproj.SuggestedBindingRedirects.cache
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes_2_Stima.Form1.resources
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes_2_Stima.Properties.Resources.resources
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.csproj.GenerateResource.cache
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.csproj.CoreCompileInputs.cache
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.exe
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.pdb
