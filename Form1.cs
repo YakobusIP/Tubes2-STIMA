@@ -21,7 +21,9 @@ namespace Tubes_2_Stima
         {
             if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
+                label3.Text = folderBrowserDialog1.SelectedPath;
                 
+
             }
         }
     }
