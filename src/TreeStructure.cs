@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 
-namespace src
+namespace TreeStructure
 {
     class TreeStructure {
         static void Main(string[] args) {
@@ -28,6 +28,27 @@ namespace src
 
             root.displayTree(0);
         }
+        static TreeNode crateTreeOfFiles(string directory, TreeNode root)
+        {
+            string[] files = Directory.GetFiles(directory);
+            string[] directories = Directory.GetDirectories(directory);
+
+
+            foreach (string file in files)
+            {
+                root.AddChild(file);
+            }
+
+
+            foreach (string subDirectory in directories)
+            {
+                // Call the same method on each directory.
+                TreeNode rootChild2 = new TreeNode(subDirectory);
+                root.AddChildTree(crateTreeOfFiles(subDirectory, rootChild2));
+            }
+
+            return root;
+        }
     }
 
     class TreeNode {
@@ -41,6 +62,11 @@ namespace src
 
         public void AddChild(string folderName) {
             this.children.Add(new TreeNode(folderName));
+        }
+
+        public void AddChildTree(TreeNode folderName)
+        {
+            this.children.Add(folderName);
         }
 
         public TreeNode GetChild(int index) {
