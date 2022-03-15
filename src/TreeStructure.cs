@@ -3,31 +3,20 @@ using System;
 
 namespace src
 {
-    class TreeStructure {
-        static void Main(string[] args) {
-            // Ini testing aja buat ngetes tree structure-nya
-            TreeNode root = new TreeNode("Root Folder");
-            root.AddChild("A");
-            root.AddChild("B");
-            root.AddChild("C");
-            TreeNode rootChild1 = root.GetChild(0);
-            TreeNode rootChild2 = root.GetChild(1);
-            TreeNode rootChild3 = root.GetChild(2);
+    class TreeStructure
+    {
+        static void Main(string[] args)
+        {
+            // Ini testing bat tree struct si folder, jadi ganti ke directory computer masing2 :D
+            // saran, pilih folder yang ga banyak anaknya gt deh
+            // tadi pake folder stima yg ada si overdrive, agak shock panjang bgt treenya AHAHAHHA
+            string directory = @"C:\Kuliah\(4)Semester4\OOP";
+            TreeNode root = new TreeNode(directory);
 
-            rootChild1.AddChild("D");
-            rootChild1.AddChild("E");
-            rootChild1.AddChild("F");
-
-            rootChild2.AddChild("G");
-
-            rootChild3.AddChild("H");
-            rootChild3.AddChild("I");
-
-            TreeNode child1Child = rootChild2.GetChild(0);
-            child1Child.AddChild("J");
-
+            root = crateTreeOfFiles(directory, root);
             root.displayTree(0);
         }
+
         static TreeNode crateTreeOfFiles(string directory, TreeNode root)
         {
             string[] files = Directory.GetFiles(directory);
@@ -51,16 +40,19 @@ namespace src
         }
     }
 
-    class TreeNode {
+    class TreeNode
+    {
         public string folderName;
         public List<TreeNode> children;
 
-        public TreeNode(string folderName) {
+        public TreeNode(string folderName)
+        {
             this.folderName = folderName;
             this.children = new List<TreeNode>();
         }
 
-        public void AddChild(string folderName) {
+        public void AddChild(string folderName)
+        {
             this.children.Add(new TreeNode(folderName));
         }
 
@@ -69,22 +61,27 @@ namespace src
             this.children.Add(folderName);
         }
 
-        public TreeNode GetChild(int index) {
+        public TreeNode GetChild(int index)
+        {
             return this.children[index];
         }
 
-        public int childCount() {
+        public int childCount()
+        {
             return this.children.Count;
         }
 
-        public void displayTree(int level) {
-            for (int i = 0; i < level; i++) {
+        public void displayTree(int level)
+        {
+            for (int i = 0; i < level; i++)
+            {
                 Console.Write("\t");
             }
             Console.WriteLine(this.folderName);
-            foreach (var child in this.children) {
+            foreach (var child in this.children)
+            {
                 child.displayTree(level + 1);
             }
-        } 
+        }
     }
 }
