@@ -21,6 +21,11 @@ namespace src
             // find folder BFS style
             (List<string> path, List<string> haveVisited) = myBFSMethod("siangg.txt", root);
 
+            // find folder DFS
+            List<string> visitedDirectory = new List<string>();
+            List<string> pathIn = new List<string>();
+            (List<string> path2, List<string> visitedFolder) = DFSSearch("itb.txt", root, pathIn, visitedDirectory);
+
             //print hasil path ketemunya
             Console.WriteLine("file ketemu di");
             foreach (string dir in path)
@@ -31,6 +36,17 @@ namespace src
             //print yang udah dikunjungin
             Console.WriteLine("yang udah dikunjungin");
             foreach (string dir in haveVisited)
+            {
+                Console.WriteLine(dir);
+            }
+
+            Console.WriteLine("ketemu pake DFS:");
+            foreach (string dir in path2) {
+                Console.WriteLine(dir);
+            }
+
+            Console.WriteLine("yang DFS kunjungi:");
+            foreach (string dir in visitedFolder)
             {
                 Console.WriteLine(dir);
             }
@@ -109,6 +125,25 @@ namespace src
            //onsole.WriteLine(strQ.Peek());
 
             return (path, haveVisited);
+        }
+
+        static (List<string> path, List<string> visitedDirectory) DFSSearch(string folderName, TreeNode root, List<string> path, List<string> visitedDirectory) {
+            // Base of recursion
+            string rootFullDirectory = root.getFolderName();
+            if (Path.GetFileName(rootFullDirectory) == folderName) {
+                path.Add(rootFullDirectory);
+                return (path, visitedDirectory);
+            }
+
+            foreach (var child in root.getChildren()) {
+                // If the directory has been checked thus added to visitedDirectory, then skip it
+                if (!visitedDirectory.Contains(child.getFolderName())) {
+                    // Add to the list of visitedDirectory and recurse the function
+                    visitedDirectory.Add(child.getFolderName());
+                    DFSSearch(folderName, child, path, visitedDirectory);
+                }
+            }
+            return (path, visitedDirectory);
         }
     }
 
