@@ -1,12 +1,53 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Tubes_2_Stima
 {
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+
+        }
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            //create a viewer object
+            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            //create a graph object
+            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+            //set graph back color
+            graph.Attr.BackgroundColor = Microsoft.Msagl.Drawing.Color.Gray;
+            //create the graph content
+            graph.AddEdge("FolderA", "FolderB");
+            graph.AddEdge("FolderB", "FolderC");
+            graph.AddEdge("FolderA", "FolderD");
+            graph.AddEdge("FolderA", "FolderE");
+            graph.FindNode("FolderA").Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
+            graph.FindNode("FolderB").Attr.FillColor = Microsoft.Msagl.Drawing.Color.Green;
+            Microsoft.Msagl.Drawing.Node c = graph.FindNode("FolderC");
+            c.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+            //bind the graph to the viewer
+            viewer.Graph = graph;
+            //associate the viewer with the form
+            this.SuspendLayout();
+            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Controls.Add(viewer);
+            this.ResumeLayout();
+        }
+    }
+
     class TreeStructure
     {
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
             // Ini testing bat tree struct si folder, jadi ganti ke directory computer masing2 :D
             // saran, pilih folder yang ga banyak anaknya gt deh
@@ -34,7 +75,7 @@ namespace Tubes_2_Stima
             {
                 Console.WriteLine(dir);
             }
-        }
+        }*/
 
         static TreeNode crateTreeOfFiles(string directory, TreeNode root)
         {
@@ -59,15 +100,15 @@ namespace Tubes_2_Stima
         }
         static (List<string> path, List<string> haveVisited) myBFSMethod(string filename, TreeNode root)
         {
-            Queue<TreeNode> strQ = new Queue<TreeNode> ();
-            List<string> haveVisited = new List<string> ();
-            List<string> path = new List<string> ();
+            Queue<TreeNode> strQ = new Queue<TreeNode>();
+            List<string> haveVisited = new List<string>();
+            List<string> path = new List<string>();
 
             strQ.Enqueue(root);
 
             // root.children.Count == 0
 
-            while(strQ.Count > 0)
+            while (strQ.Count > 0)
             {
                 /*
                 Console.WriteLine(strQ.Peek().getFolderName());
@@ -76,7 +117,7 @@ namespace Tubes_2_Stima
                 string isiQueue = strQ.Peek().getFolderName();
                 string result;
                 result = Path.GetFileName(isiQueue);
-                if(strQ.Peek().children.Count == 0)
+                if (strQ.Peek().children.Count == 0)
                 {
                     if (result == filename)
                     {
@@ -93,20 +134,20 @@ namespace Tubes_2_Stima
                 {
                     foreach (var child in strQ.Peek().children)
                     {
-                        strQ.Enqueue (child);
+                        strQ.Enqueue(child);
                     }
                     haveVisited.Add(strQ.Peek().getFolderName());
                     strQ.Dequeue();
                 }
             }
 
-            if(path.Count == 0)
+            if (path.Count == 0)
             {
                 path.Add("not found");
             }
 
 
-           //onsole.WriteLine(strQ.Peek());
+            //onsole.WriteLine(strQ.Peek());
 
             return (path, haveVisited);
         }
@@ -161,4 +202,5 @@ namespace Tubes_2_Stima
             }
         }
     }
+
 }
