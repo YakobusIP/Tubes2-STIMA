@@ -9,3 +9,9 @@ D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\o
 D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.csproj.CoreCompileInputs.cache
 D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.exe
 D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.pdb
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\bin\Debug\AutomaticGraphLayout.dll
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\bin\Debug\AutomaticGraphLayout.Drawing.dll
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\bin\Debug\Microsoft.Msagl.WpfGraphControl.dll
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes 2 Stima.csproj.CopyComplete
+D:\KULIAH\SEMESTER 4\Strategi Algoritma\Tugas\Tugas Besar\Tubes 2\Tubes2-STIMA\obj\Debug\Tubes_2_Stima.Form2.resources
