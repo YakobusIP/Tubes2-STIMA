@@ -19,7 +19,7 @@ namespace Tubes_2_Stima
             root.displayTree(0);
 
             // find folder BFS style
-            (List<string> path, List<string> haveVisited) = myBFSMethod("siangg.txt", root, true);
+            (List<string> path, List<string> haveVisited, List<string> wayToPath) = myBFSMethod("siangg.txt", root, true);
 
             // find folder DFS
             List<string> visitedDirectory = new List<string>();
@@ -29,6 +29,13 @@ namespace Tubes_2_Stima
             //print hasil BFS path ketemunya
             Console.WriteLine("file ketemu pake BFS di:");
             foreach (string dir in path)
+            {
+                Console.WriteLine(dir);
+            }
+
+            // bikin way to path
+            Console.WriteLine("wayToPath:");
+            foreach (string dir in wayToPath)
             {
                 Console.WriteLine(dir);
             }
@@ -53,7 +60,7 @@ namespace Tubes_2_Stima
             }
         }
 
-        static TreeNode crateTreeOfFiles(string directory, TreeNode root)
+        public static TreeNode crateTreeOfFiles(string directory, TreeNode root)
         {
             string[] files = Directory.GetFiles(directory);
             string[] directories = Directory.GetDirectories(directory);
@@ -72,11 +79,12 @@ namespace Tubes_2_Stima
             return root;
         }
 
-        static (List<string> path, List<string> haveVisited) myBFSMethod(string filename, TreeNode root, Boolean findAll)
+        public static (List<string> path, List<string> haveVisited, List<string> wayToPath) myBFSMethod(string filename, TreeNode root, Boolean findAll)
         {
             Queue<TreeNode> strQ = new Queue<TreeNode>();
             List<string> haveVisited = new List<string>();
             List<string> path = new List<string>();
+            List<string> wayToPath = new List<string>();
 
             strQ.Enqueue(root);
             while (strQ.Count > 0){
@@ -107,12 +115,14 @@ namespace Tubes_2_Stima
 
             if (path.Count == 0){
                 path.Add("not found");
+            } else {
+                wayToPath = BreakPath(path, root.getFolderName());
             }
 
-            return (path, haveVisited);
+            return (path, haveVisited, wayToPath);
         }
 
-        static (List<string> path, List<string> visitedDirectory) DFSSearch(string folderName, TreeNode root, List<string> path, List<string> visitedDirectory)
+        public static (List<string> path, List<string> visitedDirectory) DFSSearch(string folderName, TreeNode root, List<string> path, List<string> visitedDirectory)
         {
             // Base of recursion
             string rootFullDirectory = root.getFolderName();
@@ -134,9 +144,29 @@ namespace Tubes_2_Stima
             }
             return (path, visitedDirectory);
         }
+
+        public static List<string> BreakPath(List<string> path, string directory)
+        {
+            List<string> pecahan = new List<string>();
+            foreach (string dir in path)
+            {
+                string isiPecahan = dir;
+                while (Path.GetDirectoryName(isiPecahan) != null)
+                {
+                    pecahan.Add(isiPecahan);
+                    isiPecahan = Path.GetDirectoryName(isiPecahan);
+                    if (isiPecahan == directory)
+                    {
+                        pecahan.Add(isiPecahan);
+                        break;
+                    }
+                }
+            }
+            return pecahan;
+        }
     }
 
-    class TreeNode
+    public class TreeNode
     {
         public string folderName;
         public List<TreeNode> children;

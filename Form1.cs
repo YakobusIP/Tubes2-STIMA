@@ -24,6 +24,7 @@ namespace Tubes_2_Stima
             public static List<FileInfo> answ = new List<FileInfo>();
             public static List<string> path = new List<string>();
             public static List<string> haveVisited = new List<string>();
+            public static List<string> wayToPath = new List<string>();
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
@@ -65,7 +66,7 @@ namespace Tubes_2_Stima
                 string file = textBox1.Text;
                 TreeNode root = new TreeNode(folderBrowserDialog1.SelectedPath);
                 root = TreeStructure.crateTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
-                (global.path,global.haveVisited) = TreeStructure.myBFSMethod(file,root,false);
+                (global.path,global.haveVisited,global.wayToPath) = TreeStructure.myBFSMethod(file,root,false);
 
                 Form2 frm = new Form2() { Dock = DockStyle.Fill , TopLevel = false, TopMost = true};
                 this.panel1.Controls.Add(frm);

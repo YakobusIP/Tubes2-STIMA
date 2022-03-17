@@ -36,11 +36,14 @@ namespace Tubes_2_Stima
                 Console.WriteLine(file.FullName);*/
                 graph.AddEdge(file.DirectoryName,file.FullName);
             }
+
+
             foreach (string dir in Form1.global.haveVisited)
             {
                 graph.FindNode(dir).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
             }
-            foreach (string file in Form1.global.path)
+
+            foreach (string file in Form1.global.wayToPath)
             {
                 graph.FindNode(file).Attr.FillColor= Microsoft.Msagl.Drawing.Color.Blue;
             }
