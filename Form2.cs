@@ -21,8 +21,6 @@ namespace Tubes_2_Stima
         private void Form2_Load(object sender, EventArgs e)
         {   
             
-
-
             //create a viewer object
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
             //create a graph object
@@ -37,6 +35,14 @@ namespace Tubes_2_Stima
                 graph.AddEdge(file.DirectoryName,file.FullName);
             }
 
+            //edit graph name
+            foreach (FileInfo file in Form1.global.answ)
+            {
+                Microsoft.Msagl.Drawing.Node c = graph.FindNode(file.FullName);
+                string dirnya = file.FullName;
+                string result = Path.GetFileName(dirnya);
+                c.LabelText = result;
+            }
 
             foreach (string dir in Form1.global.haveVisited)
             {
