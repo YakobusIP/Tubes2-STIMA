@@ -22,6 +22,8 @@ namespace Tubes_2_Stima
         public static class global
         {
             public static List<FileInfo> answ = new List<FileInfo>();
+            public static List<string> path = new List<string>();
+            public static List<string> haveVisited = new List<string>();
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
@@ -40,10 +42,9 @@ namespace Tubes_2_Stima
                 foreach(string dir in directory)
                 {
                     FileInfo infodir = new FileInfo(dir);
-                    /*Console.WriteLine(infodir.FullName);*/
+                    
                     global.answ.Add(infodir);
-                    /*Console.WriteLine(infodir.DirectoryName);*/
-                    /*answ.Add(infodir.DirectoryName);*/
+                    
                     string[] files2 = Directory.GetFiles(dir);
                     foreach (string file in files2)
                     {
@@ -52,11 +53,7 @@ namespace Tubes_2_Stima
                     }
                 }
 
-                /*foreach (FileInfo infofile in global.answ)
-                {
-                    Console.WriteLine(infofile.Directory);
-                    Console.WriteLine(infofile.Name);
-                }*/
+                
             }
         }
 
@@ -66,6 +63,10 @@ namespace Tubes_2_Stima
             {
                 //bfs
                 string file = textBox1.Text;
+                TreeNode root = new TreeNode(folderBrowserDialog1.SelectedPath);
+                root = TreeStructure.crateTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
+                (global.path,global.haveVisited) = TreeStructure.myBFSMethod(file,root);
+
                 Form2 frm = new Form2() { Dock = DockStyle.Fill , TopLevel = false, TopMost = true};
                 this.panel1.Controls.Add(frm);
                 frm.Show();
