@@ -20,29 +20,30 @@ namespace Tubes_2_Stima
             root.displayTree(0);
 
             // find folder BFS style
-            (List<string> path, List<string> haveVisited) = myBFSMethod("siangg.txt", root);
+            (List<string> path, List<string> haveVisited) = myBFSMethod("siangg.txt", root, true);
 
             // find folder DFS
             List<string> visitedDirectory = new List<string>();
             List<string> pathIn = new List<string>();
             (List<string> path2, List<string> visitedFolder) = DFSSearch("itb.txt", root, pathIn, visitedDirectory);
 
-            //print hasil path ketemunya
-            Console.WriteLine("file ketemu di");
+            //print hasil BFS path ketemunya
+            Console.WriteLine("file ketemu pake BFS di:");
             foreach (string dir in path)
             {
                 Console.WriteLine(dir);
             }
 
-            //print yang udah dikunjungin
-            Console.WriteLine("yang udah dikunjungin");
+            //print yang udah dikunjungin BFS
+            Console.WriteLine("yang udah dikunjungin BFS:");
             foreach (string dir in haveVisited)
             {
                 Console.WriteLine(dir);
             }
 
             Console.WriteLine("ketemu pake DFS:");
-            foreach (string dir in path2) {
+            foreach (string dir in path2)
+            {
                 Console.WriteLine(dir);
             }
 
@@ -57,7 +58,6 @@ namespace Tubes_2_Stima
         {
             string[] files = Directory.GetFiles(directory);
             string[] directories = Directory.GetDirectories(directory);
-
 
             foreach (string file in files)
             {
@@ -74,31 +74,33 @@ namespace Tubes_2_Stima
 
             return root;
         }
-        public static (List<string> path, List<string> haveVisited) myBFSMethod(string filename, TreeNode root)
+
+        public static (List<string> path, List<string> haveVisited) myBFSMethod(string filename, TreeNode root, Boolean findAll)
         {
-            Queue<TreeNode> strQ = new Queue<TreeNode> ();
-            List<string> haveVisited = new List<string> ();
-            List<string> path = new List<string> ();
+            Queue<TreeNode> strQ = new Queue<TreeNode>();
+            List<string> haveVisited = new List<string>();
+            List<string> path = new List<string>();
 
             strQ.Enqueue(root);
-
-            // root.children.Count == 0
-
-            while(strQ.Count > 0)
+            while (strQ.Count > 0)
             {
-                /*
-                Console.WriteLine(strQ.Peek().getFolderName());
-                Console.WriteLine(strQ.Count());
-                */
                 string isiQueue = strQ.Peek().getFolderName();
                 string result;
                 result = Path.GetFileName(isiQueue);
-                if(strQ.Peek().children.Count == 0)
+
+                if (strQ.Peek().children.Count == 0)
                 {
                     if (result == filename)
                     {
                         path.Add(isiQueue);
-                        strQ.Clear();
+                        if (findAll == false)
+                        {   // find 1
+                            strQ.Clear();
+                        }
+                        else
+                        {                 // find all
+                            strQ.Dequeue();
+                        }
                     }
                     else
                     {
@@ -110,35 +112,36 @@ namespace Tubes_2_Stima
                 {
                     foreach (var child in strQ.Peek().children)
                     {
-                        strQ.Enqueue (child);
+                        strQ.Enqueue(child);
                     }
                     haveVisited.Add(strQ.Peek().getFolderName());
                     strQ.Dequeue();
                 }
             }
 
-            if(path.Count == 0)
+            if (path.Count == 0)
             {
                 path.Add("not found");
             }
 
-
-           //onsole.WriteLine(strQ.Peek());
-
             return (path, haveVisited);
         }
 
-        static (List<string> path, List<string> visitedDirectory) DFSSearch(string folderName, TreeNode root, List<string> path, List<string> visitedDirectory) {
+        static (List<string> path, List<string> visitedDirectory) DFSSearch(string folderName, TreeNode root, List<string> path, List<string> visitedDirectory)
+        {
             // Base of recursion
             string rootFullDirectory = root.getFolderName();
-            if (Path.GetFileName(rootFullDirectory) == folderName) {
+            if (Path.GetFileName(rootFullDirectory) == folderName)
+            {
                 path.Add(rootFullDirectory);
                 return (path, visitedDirectory);
             }
 
-            foreach (var child in root.children) {
+            foreach (var child in root.children)
+            {
                 // If the directory has been checked thus added to visitedDirectory, then skip it
-                if (!visitedDirectory.Contains(child.getFolderName())) {
+                if (!visitedDirectory.Contains(child.getFolderName()))
+                {
                     // Add to the list of visitedDirectory and recurse the function
                     visitedDirectory.Add(child.getFolderName());
                     DFSSearch(folderName, child, path, visitedDirectory);

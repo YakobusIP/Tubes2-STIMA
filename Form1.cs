@@ -65,7 +65,7 @@ namespace Tubes_2_Stima
                 string file = textBox1.Text;
                 TreeNode root = new TreeNode(folderBrowserDialog1.SelectedPath);
                 root = TreeStructure.crateTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
-                (global.path,global.haveVisited) = TreeStructure.myBFSMethod(file,root);
+                (global.path,global.haveVisited) = TreeStructure.myBFSMethod(file,root,false);
 
                 Form2 frm = new Form2() { Dock = DockStyle.Fill , TopLevel = false, TopMost = true};
                 this.panel1.Controls.Add(frm);
