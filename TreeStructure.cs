@@ -6,28 +6,8 @@ using System.Linq;
 
 namespace Tubes_2_Stima
 {
-    class TreeStructure
+    class BFSDFS
     {
-        
-        public static TreeNode crateTreeOfFiles(string directory, TreeNode root)
-        {
-            string[] files = Directory.GetFiles(directory);
-            string[] directories = Directory.GetDirectories(directory);
-
-            foreach (string file in files){
-                root.AddChild(file);
-            }
-
-
-            foreach (string subDirectory in directories){
-                // Call the same method on each directory.
-                TreeNode rootChild2 = new TreeNode(subDirectory);
-                root.AddChildTree(crateTreeOfFiles(subDirectory, rootChild2));
-            }
-
-            return root;
-        }
-
         public static (List<string> path, List<string> haveVisited, List<string> wayToPath) myBFSMethod(string filename, TreeNode root, Boolean findAll)
         {
             Queue<TreeNode> strQ = new Queue<TreeNode>();
@@ -142,6 +122,27 @@ namespace Tubes_2_Stima
                 }
             }
             return pecahan;
+        }
+    }
+
+    public class TreeStructure
+    {
+        public static TreeNode createTreeOfFiles(string directory, TreeNode root)
+        {
+            string[] files = Directory.GetFiles(directory);
+            string[] directories = Directory.GetDirectories(directory);
+
+            foreach (string file in files){
+                root.AddChild(file);
+            }
+
+            foreach (string subDirectory in directories){
+                // Call the same method on each directory.
+                TreeNode rootChild2 = new TreeNode(subDirectory);
+                root.AddChildTree(createTreeOfFiles(subDirectory, rootChild2));
+            }
+
+            return root;
         }
     }
 

@@ -66,11 +66,11 @@ namespace Tubes_2_Stima
             var watch = Stopwatch.StartNew();
             string file = textBox1.Text;
             TreeNode root = new TreeNode(folderBrowserDialog1.SelectedPath);
-            root = TreeStructure.crateTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
+            root = TreeStructure.createTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
             if (radioButton1.Checked)
             {
-                //bfs
-                (global.path,global.haveVisited,global.wayToPath) = TreeStructure.myBFSMethod(file,root,checkBox1.Checked);
+                //bfs 
+                (global.path,global.haveVisited,global.wayToPath) = BFSDFS.myBFSMethod(file,root,checkBox1.Checked);
                 foreach (string fil in global.path)
                 {
                     comboBox1.Items.Add(fil);
@@ -83,8 +83,8 @@ namespace Tubes_2_Stima
                 //dfs
                 List<string> visitedDirectory = new List<string>();
                 List<string> pathIn = new List<string>();
-                (global.path, global.haveVisited) = TreeStructure.DFSSearch(file, root, pathIn, visitedDirectory, checkBox1.Checked);
-                global.wayToPath = TreeStructure.BreakPath(global.path, root.getFolderName());
+                (global.path, global.haveVisited) = BFSDFS.DFSSearch(file, root, pathIn, visitedDirectory, checkBox1.Checked);
+                global.wayToPath = BFSDFS.BreakPath(global.path, root.getFolderName());
                 foreach (string fil in global.path)
                 {
                     comboBox1.Items.Add(fil);
