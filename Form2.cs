@@ -28,11 +28,13 @@ namespace Tubes_2_Stima
             //set graph back color
             graph.Attr.BackgroundColor = Microsoft.Msagl.Drawing.Color.White;
             //create the graph content
-            foreach (FileInfo file in Form1.global.answ)
+            /*foreach (FileInfo file in Form1.global.answ)
             {
-                /*Console.WriteLine(file.DirectoryName);
-                Console.WriteLine(file.FullName);*/
-                graph.AddEdge(file.DirectoryName,file.FullName);
+                graph.AddEdge(file.DirectoryName, file.FullName);
+            }*/
+            for(int i = Form1.global.answ.Count ; i -->0;)
+            {
+                graph.AddEdge(Form1.global.answ[i].DirectoryName, Form1.global.answ[i].FullName);
             }
 
             //edit graph name
@@ -51,8 +53,9 @@ namespace Tubes_2_Stima
 
             foreach (string file in Form1.global.wayToPath)
             {
-                graph.FindNode(file).Attr.FillColor= Microsoft.Msagl.Drawing.Color.Blue;
+                graph.FindNode(file).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Blue;
             }
+
             /*graph.AddEdge("FolderA", "FolderB");
             graph.AddEdge("FolderB", "FolderC");
             graph.AddEdge("FolderA", "FolderD");
