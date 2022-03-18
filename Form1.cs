@@ -64,12 +64,12 @@ namespace Tubes_2_Stima
             panel1.Controls.Clear();
             comboBox1.Items.Clear();
             var watch = Stopwatch.StartNew();
+            string file = textBox1.Text;
+            TreeNode root = new TreeNode(folderBrowserDialog1.SelectedPath);
+            root = TreeStructure.crateTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
             if (radioButton1.Checked)
             {
                 //bfs
-                string file = textBox1.Text;
-                TreeNode root = new TreeNode(folderBrowserDialog1.SelectedPath);
-                root = TreeStructure.crateTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
                 (global.path,global.haveVisited,global.wayToPath) = TreeStructure.myBFSMethod(file,root,checkBox1.Checked);
                 foreach (string fil in global.path)
                 {
@@ -81,7 +81,25 @@ namespace Tubes_2_Stima
             }else if (radioButton2.Checked)
             {
                 //dfs
-                string file = textBox1.Text;
+                if (!checkBox1.Checked)
+                {
+                    List<string> visitedDirectory = new List<string>();
+                    List<string> pathIn = new List<string>();
+                    (global.path, global.haveVisited) = TreeStructure.DFSSearch(file, root, pathIn, visitedDirectory);
+                    foreach (string ful in global.path)
+                    {
+                        Console.WriteLine(ful);
+                    }
+                }
+                else
+                {
+                    List<string> allDirectories = new List<string>();
+                    allDirectories = TreeStructure.findAllDirectories(root, allDirectories);
+
+                    List<string> visitedDirectory2 = new List<string>();
+                    List<List<string>> pathIn2 = new List<List<string>>();
+                    (List<List<string>> allPath, List<string> visitedFolder2) = TreeStructure.DFSSearchAllOccurence(file, root, pathIn2, visitedDirectory2, allDirectories);
+                }
                 Form2 frm = new Form2() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 this.panel1.Controls.Add(frm);
                 frm.Show();
