@@ -131,7 +131,7 @@ namespace Tubes_2_Stima
             return (path, haveVisited, wayToPath);
         }
 
-        static (List<string> path, List<string> visitedDirectory) DFSSearch(string folderName, TreeNode root, List<string> path, List<string> visitedDirectory, Boolean findAll) {
+        public static (List<string> path, List<string> visitedDirectory) DFSSearch(string folderName, TreeNode root, List<string> path, List<string> visitedDirectory, Boolean findAll) {
 
             if (findAll == true) {
                 // Base of recursion
