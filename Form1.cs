@@ -70,7 +70,7 @@ namespace Tubes_2_Stima
             if (radioButton1.Checked)
             {
                 //bfs 
-                (global.path,global.haveVisited,global.wayToPath) = BFSDFS.myBFSMethod(file,root,checkBox1.Checked);
+                (global.path,global.haveVisited,global.wayToPath) = BFSDFS.BFSSearch(file,root,checkBox1.Checked);
                 foreach (string fil in global.path)
                 {
                     comboBox1.Items.Add(fil);

@@ -8,7 +8,7 @@ namespace Tubes_2_Stima
 {
     class BFSDFS
     {
-        public static (List<string> path, List<string> haveVisited, List<string> wayToPath) myBFSMethod(string filename, TreeNode root, Boolean findAll)
+        public static (List<string> path, List<string> haveVisited, List<string> wayToPath) BFSSearch(string filename, TreeNode root, Boolean findAll)
         {
             Queue<TreeNode> strQ = new Queue<TreeNode>();
             List<string> haveVisited = new List<string>();

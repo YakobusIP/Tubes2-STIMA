@@ -21,7 +21,7 @@ namespace Tubes_2_Stima
             root.displayTree(0);
 
             // find folder BFS style
-            (List<string> path, List<string> haveVisited, List<string> wayToPath) = myBFSMethod("siangg.txt", root, true);
+            (List<string> path, List<string> haveVisited, List<string> wayToPath) = BFSSearch("siangg.txt", root, true);
 
             // find folder DFS
             // find folder DFS
@@ -73,7 +73,7 @@ namespace Tubes_2_Stima
             }
         }
 
-        public static (List<string> path, List<string> haveVisited, List<string> wayToPath) myBFSMethod(string filename, TreeNode root, Boolean findAll)
+        public static (List<string> path, List<string> haveVisited, List<string> wayToPath) BFSSearch(string filename, TreeNode root, Boolean findAll)
         {
             Queue<TreeNode> strQ = new Queue<TreeNode>();
             List<string> haveVisited = new List<string>();
