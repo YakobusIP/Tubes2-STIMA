@@ -18,8 +18,15 @@ namespace Tubes_2_Stima
             InitializeComponent();
 
         }
-        private void Form2_Load(object sender, EventArgs e)
+
+        async Task PutTaskDelay()
+        {
+            await Task.Delay(200);
+        }
+
+        private async void Form2_Load(object sender, EventArgs e)
         {   
+
             
             //create a viewer object
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
@@ -47,30 +54,26 @@ namespace Tubes_2_Stima
             }
 
             foreach (string dir in Form1.global.haveVisited)
-            {
+            {   
+                await PutTaskDelay(); 
+                this.SuspendLayout();
                 graph.FindNode(dir).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
+                this.ResumeLayout();
+                viewer.Graph = graph;
+                this.Controls.Add(viewer);
+                viewer.Dock = System.Windows.Forms.DockStyle.Fill;
             }
 
             foreach (string file in Form1.global.wayToPath)
             {
+                this.SuspendLayout();
                 graph.FindNode(file).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Blue;
+                this.ResumeLayout();
             }
 
-            /*graph.AddEdge("FolderA", "FolderB");
-            graph.AddEdge("FolderB", "FolderC");
-            graph.AddEdge("FolderA", "FolderD");
-            graph.AddEdge("FolderA", "FolderE");
-            graph.FindNode("FolderA").Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
-            graph.FindNode("FolderB").Attr.FillColor = Microsoft.Msagl.Drawing.Color.Green;
-            Microsoft.Msagl.Drawing.Node c = graph.FindNode("FolderC");
-            c.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;*/
-            //bind the graph to the viewer
-            viewer.Graph = graph;
-            //associate the viewer with the form
-            this.SuspendLayout();
-            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Controls.Add(viewer);
-            this.ResumeLayout();
+            
+            
+            
         }
 
     }

@@ -81,22 +81,13 @@ namespace Tubes_2_Stima
             }else if (radioButton2.Checked)
             {
                 //dfs
-                if (!checkBox1.Checked)
+                List<string> visitedDirectory = new List<string>();
+                List<string> pathIn = new List<string>();
+                (global.path, global.haveVisited) = TreeStructure.DFSSearch(file, root, pathIn, visitedDirectory, checkBox1.Checked);
+                global.wayToPath = TreeStructure.BreakPath(global.path, root.getFolderName());
+                foreach (string fil in global.path)
                 {
-                    List<string> visitedDirectory = new List<string>();
-                    List<string> pathIn = new List<string>();
-                    (global.path, global.haveVisited) = TreeStructure.DFSSearch(file, root, pathIn, visitedDirectory);
-                    global.wayToPath = TreeStructure.BreakPath(global.path, folderBrowserDialog1.SelectedPath);
-                }
-                else
-                {
-                    List<string> allDirectories = new List<string>();
-                    allDirectories = TreeStructure.findAllDirectories(root, allDirectories);
-
-                    List<string> visitedDirectory2 = new List<string>();
-                    List<List<string>> pathIn2 = new List<List<string>>();
-                    (List<List<string>> allPath, List<string> visitedFolder2) = TreeStructure.DFSSearchAllOccurence(file, root, pathIn2, visitedDirectory2, allDirectories);
-                    global.wayToPath = TreeStructure.BreakPath(global.path, folderBrowserDialog1.SelectedPath);
+                    comboBox1.Items.Add(fil);
                 }
                 Form2 frm = new Form2() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 this.panel1.Controls.Add(frm);
