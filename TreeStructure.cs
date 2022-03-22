@@ -21,7 +21,7 @@ namespace Tubes_2_Stima
                 string result;
                 result = Path.GetFileName(isiQueue);
 
-                if (strQ.Peek().children.Count == 0){
+                if (strQ.Peek().getChildren().Count == 0){
                     if (result == filename){
                         path.Add(isiQueue);
                         if(findAll == false){   // find 1
@@ -34,7 +34,7 @@ namespace Tubes_2_Stima
                         strQ.Dequeue();
                     }
                 } else {
-                    foreach (var child in strQ.Peek().children){
+                    foreach (var child in strQ.Peek().getChildren()){
                         strQ.Enqueue(child);
                     }
                     haveVisited.Add(strQ.Peek().getFolderName());
@@ -67,7 +67,7 @@ namespace Tubes_2_Stima
                     visitedDirectory.Add(rootFullDirectory);
                 }
 
-                foreach (var child in root.children) {
+                foreach (var child in root.getChildren()) {
                     // If the directory has been checked thus added to visitedDirectory, then skip it
                     if (!visitedDirectory.Contains(child.getFolderName())) {
                         // Add to the list of visitedDirectory and recurse the function
@@ -90,7 +90,7 @@ namespace Tubes_2_Stima
                     visitedDirectory.Add(rootFullDirectory);
                 }
 
-                foreach (var child in root.children) {
+                foreach (var child in root.getChildren()) {
                     // If the directory has been checked thus added to visitedDirectory, then skip it
                     // Recurse only if the file hasn't been found yet
                     if ((!visitedDirectory.Contains(child.getFolderName())) && (path.Count() == 0)) {
@@ -148,8 +148,8 @@ namespace Tubes_2_Stima
 
     public class TreeNode
     {
-        public string folderName;
-        public List<TreeNode> children;
+        private string folderName;
+        private List<TreeNode> children;
 
         public TreeNode(string folderName)
         {
@@ -165,6 +165,11 @@ namespace Tubes_2_Stima
         public void AddChildTree(TreeNode folderName)
         {
             this.children.Add(folderName);
+        }
+
+        public List<TreeNode> getChildren()
+        {
+            return this.children;
         }
 
         public TreeNode GetChild(int index)
