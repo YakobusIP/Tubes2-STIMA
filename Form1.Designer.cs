@@ -72,12 +72,13 @@
             // chooseFolder
             // 
             this.chooseFolder.AutoSize = true;
+            this.chooseFolder.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.chooseFolder.Location = new System.Drawing.Point(16, 763);
             this.chooseFolder.Name = "chooseFolder";
             this.chooseFolder.Size = new System.Drawing.Size(94, 23);
             this.chooseFolder.TabIndex = 2;
             this.chooseFolder.Text = "Choose Folder...";
-            this.chooseFolder.UseVisualStyleBackColor = true;
+            this.chooseFolder.UseVisualStyleBackColor = false;
             this.chooseFolder.Click += new System.EventHandler(this.chooseFolder_Click);
             // 
             // label3
@@ -101,9 +102,10 @@
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(338, 768);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(231, 20);
+            this.textBox1.Size = new System.Drawing.Size(231, 26);
             this.textBox1.TabIndex = 5;
             // 
             // label5
@@ -166,12 +168,15 @@
             // 
             // search
             // 
+            this.search.AutoSize = true;
+            this.search.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(1152, 765);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(75, 23);
+            this.search.Size = new System.Drawing.Size(75, 30);
             this.search.TabIndex = 11;
             this.search.Text = "Search!";
-            this.search.UseVisualStyleBackColor = true;
+            this.search.UseVisualStyleBackColor = false;
             this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // panel1
@@ -195,20 +200,24 @@
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(910, 24);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(236, 21);
+            this.comboBox1.Size = new System.Drawing.Size(236, 28);
             this.comboBox1.TabIndex = 14;
             // 
             // goToFile
             // 
+            this.goToFile.AutoSize = true;
+            this.goToFile.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.goToFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.goToFile.Location = new System.Drawing.Point(1152, 24);
             this.goToFile.Name = "goToFile";
-            this.goToFile.Size = new System.Drawing.Size(75, 23);
+            this.goToFile.Size = new System.Drawing.Size(92, 30);
             this.goToFile.TabIndex = 15;
             this.goToFile.Text = "Go To File";
-            this.goToFile.UseVisualStyleBackColor = true;
+            this.goToFile.UseVisualStyleBackColor = false;
             this.goToFile.Click += new System.EventHandler(this.goToFile_Click);
             // 
             // label8
@@ -234,6 +243,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1273, 819);
             this.Controls.Add(this.durationValue);
             this.Controls.Add(this.label8);
