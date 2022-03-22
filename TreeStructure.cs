@@ -172,32 +172,9 @@ namespace Tubes_2_Stima
             return this.children;
         }
 
-        public TreeNode GetChild(int index)
-        {
-            return this.children[index];
-        }
-
         public string getFolderName()
         {
             return this.folderName;
-        }
-
-        public int childCount()
-        {
-            return this.children.Count;
-        }
-
-        public void displayTree(int level)
-        {
-            for (int i = 0; i < level; i++)
-            {
-                Console.Write("\t");
-            }
-            Console.WriteLine(this.folderName);
-            foreach (var child in this.children)
-            {
-                child.displayTree(level + 1);
-            }
         }
     }
 }
