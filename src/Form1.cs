@@ -29,7 +29,8 @@ namespace Tubes_2_Stima
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
-        {
+        {   
+            global.answ.Clear();
             if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 label3.Text = folderBrowserDialog1.SelectedPath;
