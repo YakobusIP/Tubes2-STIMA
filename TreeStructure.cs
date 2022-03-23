@@ -42,9 +42,7 @@ namespace Tubes_2_Stima
                 }
             }
 
-            if (path.Count == 0){
-                path.Add("not found");
-            } else {
+            if (path.Count != 0){
                 wayToPath = BreakPath(path, root.getFolderName());
             }
 

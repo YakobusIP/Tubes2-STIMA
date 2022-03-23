@@ -21,13 +21,11 @@ namespace Tubes_2_Stima
 
         async Task PutTaskDelay()
         {
-            await Task.Delay(200);
+            await Task.Delay(400);
         }
 
         private async void Form2_Load(object sender, EventArgs e)
-        {   
-
-            
+        {    
             //create a viewer object
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
             //create a graph object
@@ -51,13 +49,14 @@ namespace Tubes_2_Stima
                 string dirnya = file.FullName;
                 string result = Path.GetFileName(dirnya);
                 c.LabelText = result;
+                c.Attr.FillColor = Microsoft.Msagl.Drawing.Color.WhiteSmoke;
             }
 
             foreach (string dir in Form1.global.haveVisited)
             {   
                 await PutTaskDelay(); 
                 this.SuspendLayout();
-                graph.FindNode(dir).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
+                graph.FindNode(dir).Attr.FillColor = Microsoft.Msagl.Drawing.Color.BurlyWood;
                 this.ResumeLayout();
                 viewer.Graph = graph;
                 this.Controls.Add(viewer);
@@ -67,17 +66,10 @@ namespace Tubes_2_Stima
             foreach (string file in Form1.global.wayToPath)
             {
                 this.SuspendLayout();
-                graph.FindNode(file).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Blue;
+                //graph.FindNode(file).Attr.FillColor = Microsoft.Msagl.Drawing.Color.SteelBlue;
+                graph.FindNode(file).Attr.FillColor = Microsoft.Msagl.Drawing.Color.DarkSeaGreen;
                 this.ResumeLayout();
-            }
-
-            
-            
-            
+            }   
         }
-
     }
-
-    
-
 }
