@@ -96,7 +96,8 @@ namespace Tubes_2_Stima
             }
             watch.Stop();
             long elapsedMs = watch.ElapsedMilliseconds;
-            durationValue.Text = elapsedMs.ToString();
+            string time = elapsedMs.ToString();
+            durationValue.Text = time + " ms";
         }
 
         private void goToFile_Click(object sender, EventArgs e)
