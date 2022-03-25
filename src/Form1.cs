@@ -26,6 +26,7 @@ namespace Tubes_2_Stima
             public static List<string> path = new List<string>();
             public static List<string> haveVisited = new List<string>();
             public static List<string> wayToPath = new List<string>();
+            public static Boolean BFSSearchh = true;
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
@@ -71,6 +72,7 @@ namespace Tubes_2_Stima
             if (radioButton1.Checked)
             {
                 //bfs 
+                global.BFSSearchh = true;
                 (global.path,global.haveVisited,global.wayToPath) = BFSDFS.BFSSearch(file,root,checkBox1.Checked);
                 foreach (string fil in global.path)
                 {
@@ -82,6 +84,7 @@ namespace Tubes_2_Stima
             }else if (radioButton2.Checked)
             {
                 //dfs
+                global.BFSSearchh = false;
                 List<string> visitedDirectory = new List<string>();
                 List<string> pathIn = new List<string>();
                 (global.path, global.haveVisited) = BFSDFS.DFSSearch(file, root, pathIn, visitedDirectory, checkBox1.Checked);

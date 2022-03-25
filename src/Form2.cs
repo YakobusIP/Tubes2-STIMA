@@ -37,6 +37,7 @@ namespace Tubes_2_Stima
             {
                 graph.AddEdge(file.DirectoryName, file.FullName);
             }*/
+
             for(int i = Form1.global.answ.Count ; i -->0;)
             {
                 graph.AddEdge(Form1.global.answ[i].DirectoryName, Form1.global.answ[i].FullName);
@@ -52,16 +53,40 @@ namespace Tubes_2_Stima
                 c.Attr.FillColor = Microsoft.Msagl.Drawing.Color.WhiteSmoke;
             }
 
-            foreach (string dir in Form1.global.haveVisited)
-            {   
-                await PutTaskDelay(); 
-                this.SuspendLayout();
-                graph.FindNode(dir).Attr.FillColor = Microsoft.Msagl.Drawing.Color.BurlyWood;
-                this.ResumeLayout();
-                viewer.Graph = graph;
-                this.Controls.Add(viewer);
-                viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            if (Form1.global.BFSSearchh == true)
+            {
+                foreach (string dir in Form1.global.haveVisited)
+                {   
+                    await PutTaskDelay(); 
+                    this.SuspendLayout();
+                    graph.FindNode(dir).Attr.FillColor = Microsoft.Msagl.Drawing.Color.BurlyWood;
+                    foreach (FileInfo file in Form1.global.answ)
+                    {
+                        string dirnya = file.FullName;
+                        if(Path.GetDirectoryName(dirnya) == dir)
+                        {
+                            graph.FindNode(dirnya).Attr.FillColor = Microsoft.Msagl.Drawing.Color.LightGray;
+                        }
+                    }
+                    this.ResumeLayout();
+                    viewer.Graph = graph;
+                    this.Controls.Add(viewer);
+                    viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+                }
+            }else
+            {
+                foreach (string dir in Form1.global.haveVisited)
+                {   
+                    await PutTaskDelay(); 
+                    this.SuspendLayout();
+                    graph.FindNode(dir).Attr.FillColor = Microsoft.Msagl.Drawing.Color.BurlyWood;
+                    this.ResumeLayout();
+                    viewer.Graph = graph;
+                    this.Controls.Add(viewer);
+                    viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+                }
             }
+
 
             foreach (string file in Form1.global.wayToPath)
             {
