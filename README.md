@@ -2,11 +2,12 @@
 Disusun untuk Tugas Besar 2 IF2211 Strategi Algoritma.
 
 ## Deskripsi Singkat
-Fitur pencarian pada File Explorer dapat diimplementasikan dengan teknik folder crafling, di mana mesin komputer akan mulai
+Fitur pencarian pada File Explorer dapat diimplementasikan dengan teknik folder crawling, di mana mesin komputer akan mulai
 mencari file yang sesuai dengan query mulai dari starting directory hingga seluruh children dari
-starting directory tersebut sampai satu file pertama/seluruh file ditemukan atau tidak ada file yang ditemukan. Program ini merupakan sebuah aplikasi GUI sederhana yang memodelkan fitur dari file explorer dengan memanfaatkan algoritma Breadtg First Search (BFS) dan Depth First Search (DFS).
+starting directory tersebut sampai satu file pertama/seluruh file ditemukan atau tidak ada file yang ditemukan. Program ini merupakan sebuah aplikasi GUI sederhana yang memodelkan fitur dari file explorer dengan memanfaatkan algoritma Breadth First Search (BFS) dan Depth First Search (DFS).
 
 ## Requirement
+- Visual Studio
 - .NET framework
 
 ## Langkah-Langkah Meng-Compile Program
