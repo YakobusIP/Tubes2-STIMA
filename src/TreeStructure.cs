@@ -24,9 +24,10 @@ namespace Tubes_2_Stima
                 if (strQ.Peek().getChildren().Count == 0){
                     if (result == filename){
                         path.Add(isiQueue);
-                        if(findAll == false){   // find 1
+                        if(findAll == false){                               // find 1
                             strQ.Clear();
-                        }else {                 // find all
+                        }else {     
+                            haveVisited.Add(strQ.Peek().getFolderName());   // find all
                             strQ.Dequeue();
                         }
                     } else {

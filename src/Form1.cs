@@ -27,6 +27,7 @@ namespace Tubes_2_Stima
             public static List<string> haveVisited = new List<string>();
             public static List<string> wayToPath = new List<string>();
             public static Boolean BFSSearchh = true;
+            public static string rootFolder;
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace Tubes_2_Stima
             string file = textBox1.Text;
             TreeNode root = new TreeNode(folderBrowserDialog1.SelectedPath);
             root = TreeStructure.createTreeOfFiles(folderBrowserDialog1.SelectedPath, root);
+            global.rootFolder = folderBrowserDialog1.SelectedPath;
             if (radioButton1.Checked)
             {
                 //bfs 
