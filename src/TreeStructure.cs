@@ -55,7 +55,6 @@ namespace Tubes_2_Stima
                 // Base of recursion
                 string rootFullDirectory = root.getFolderName();
                 if (Path.GetFileName(rootFullDirectory) == folderName) {
-                    Console.WriteLine("Found folder!");
                     path.Add(rootFullDirectory);
                     return (path, visitedDirectory);
                 }
@@ -78,7 +77,6 @@ namespace Tubes_2_Stima
                 // Base of recursion
                 string rootFullDirectory = root.getFolderName();
                 if (Path.GetFileName(rootFullDirectory) == folderName) {
-                    Console.WriteLine("Found folder!");
                     path.Add(rootFullDirectory);
                     return (path, visitedDirectory);
                 }
