@@ -23,6 +23,8 @@ starting directory tersebut sampai satu file pertama/seluruh file ditemukan atau
 6. Ketika program selesai mencari, di kanan atas drop-down list akan terisi dengan hyperlink menuju lokasi file
 
 ## Author
-Monica Adelia - 13520096
-Ilham Bintang - 13520102
-Yakobus Iryanto Prasethio - 13520104
+Nama                        | NIM
+----                        | ----
+Monica Adelia               | 13520096
+Ilham Bintang               | 13520102
+Yakobus Iryanto Prasethio   | 13520104
